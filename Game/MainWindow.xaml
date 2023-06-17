@@ -1,0 +1,951 @@
+﻿<Window x:Class="Game.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Game"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="1500" Loaded="Window_Loaded">
+    <StackPanel Height="650" Width="1500">
+
+        <!--Лес-->
+        <StackPanel x:Name="СЛес" Orientation="Vertical" Visibility="Visible">
+
+            <Image Source="Res\ф2.gif" Margin="0,-100,0,0" Height="800" Width="1500"/>
+            <TextBlock Text="Жизни:" Height="100" Width="250" FontSize="60" Margin="-1200,-1300,0,0" FontWeight="Bold" Foreground="White">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <Image Name="ЖИЗНИ" Height="200" Width="200" Source="Res\сердце.gif" Margin="-1230,-1000,0,0"/>
+            <ProgressBar Name="Жизни" Value="0" Minimum="0" Height="40" Width="250" Margin="-1230,-740,0,0" Foreground="#FFD00000" Background="#FF545454" MouseEnter="Жизни_MouseEnter"/>
+
+            <TextBlock Text="Заражение:" Height="100" Width="360" FontSize="60" Margin="-500,-1300,0,0" FontWeight="Bold" Foreground="White">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <Image Name="ВИРУС" Height="200" Width="200" Source="Res\1 (61).gif" Margin="-500,-1000,0,0"/>
+            <ProgressBar Name="Вирус" Value="0" Minimum="0" Maximum="1000" Height="40" Width="250" Margin="-500,-740,0,0" Foreground="#FF37FF00" Background="#FF545454" MouseEnter="Вирус_MouseEnter"/>
+            <Button Content="Лечить" Name="ЛечитьВирус" Height="40" Width="150" FontSize="25" Margin="-500,-640,0,0" FontWeight="Bold" Click="ЛечитьВирус_Click"/>
+
+
+            <TextBlock Text="Фикрики:" Height="50" Width="280" FontSize="35" Margin="-1170,-580,0,0" FontWeight="Bold" Foreground="White">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <TextBlock Name="Фикрики" Text="0 ₣" Height="50" Width="350" FontSize="30" Margin="-730,-570,0,0" FontWeight="Bold" Foreground="White">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <TextBlock Name="СрАнтизаразаИнфо" Text="Ср. антизараза:" Height="50" Width="300" FontSize="30" Margin="-1150,-450,0,0" FontWeight="Bold" Foreground="White" MouseEnter="СрАнтизаразаИнфо_MouseEnter">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <TextBlock Name="АнтизаразаСр" Text="0 шт." Height="50" Width="350" FontSize="30" Margin="-610,-450,0,0" FontWeight="Bold" Foreground="White">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <RadioButton Name="z1" GroupName="G1" Height="30" Width="250" Margin="-1240,-440,0,0" Background="White" Click="z1_Click"/>
+
+            <TextBlock Name="БолАнтизаразаИнфо" Text="Бол. антизараза:" Height="50" Width="280" FontSize="30" Margin="-1170,-360,0,0" FontWeight="Bold" Foreground="White" MouseEnter="БолАнтизаразаИнфо_MouseEnter">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <TextBlock Name="АнтизаразаБол" Text="0 шт." Height="50" Width="350" FontSize="30" Margin="-560,-360,0,0" FontWeight="Bold" Foreground="White">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <RadioButton Name="z2" GroupName="G1" Height="30" Width="250" Margin="-1240,-350,0,0" Background="White" Click="z2_Click"/>
+
+            <TextBlock Text="Инфо о героях:" Height="100" Width="460" FontSize="55" Margin="350,-1290,0,0" FontWeight="Bold" Foreground="White">
+                <TextBlock.Effect>
+                    <DropShadowEffect/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <!--Герои Лес-->
+            <StackPanel Margin="-100,0,0,0">
+
+                <!---ЛИСТ 1-->
+                <StackPanel x:Name="List1" Margin="0,20,0,0" Visibility="Visible">
+                    <!---1 РЯД-->
+                    <StackPanel>
+                        <Image Name="Герой1" Height="150" Width="150" Source="Res\1 (1).gif" Margin="100,-1100,0,0" MouseEnter="Герой1_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой1" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой1" Value="5000" Minimum="0" Maximum="5000" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой1" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5" Fill="{x:Null}"/>
+                        <Label Name="ЗакрытГерой1" Content="ЗАКРЫТО" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="320,0,0,0">
+                        <Image Name="Герой2_Скин1" Height="150" Width="150" Source="Res\1 (9).gif" Margin="0,-1100,0,0" Visibility="Visible" MouseEnter="Герой2_Скин1_MouseEnter"/>
+                        <Image Name="Герой2_Скин2" Height="150" Width="150" Source="Res\1 (19).gif" Margin="0,-1100,0,0" Visibility="Hidden" MouseEnter="Герой2_Скин1_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой2" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой2" Value="2750" Minimum="0" Maximum="2750" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой2" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой2" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой2_Скин1_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="640,0,0,0">
+                        <Image Name="Герой3" Height="150" Width="150" Source="Res\1 (21).gif" Margin="30,-1100,0,0" Visibility="Visible" MouseEnter="Герой3_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой3" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой3" Value="15000" Minimum="0" Maximum="15000" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой3" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой3" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой3_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="960,0,0,0">
+                        <Image Name="Герой4_Скин1" Height="150" Width="150" Source="Res\1 (44).gif" Margin="-50,-1100,0,0" Visibility="Visible" MouseEnter="Герой4_Скин1_MouseEnter"/>
+                        <Image Name="Герой4_Скин2" Height="150" Width="150" Source="Res\1 (45).gif" Margin="35,-1100,0,0" Visibility="Hidden" MouseEnter="Герой4_Скин1_MouseEnter"/>
+                        <Image Name="Герой4_Скин3" Height="150" Width="150" Source="Res\1 (47).gif" Margin="25,-1100,0,0" Visibility="Hidden" MouseEnter="Герой4_Скин1_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой4" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой4" Value="7000" Minimum="0" Maximum="7000" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой4" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой4" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой4_Скин1_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <!---2 РЯД-->
+                    <StackPanel Margin="0,200,0,0">
+                        <Image Name="Герой5" Height="150" Width="150" Source="Res\1 (59).gif" Margin="0,-1100,0,0" MouseEnter="Герой5_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой5" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой5" Value="7500" Minimum="0" Maximum="7500" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой5" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой5" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой5_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="320,0,0,0">
+                        <Image Name="Герой6" Height="150" Width="150" Source="Res\1 (5).gif" Margin="0,-1100,0,0" Visibility="Visible" MouseEnter="Герой6_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой6" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой6" Value="10000" Minimum="0" Maximum="10000" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой6" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой6" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой6_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="640,0,0,0">
+                        <Image Name="Герой7" Height="150" Width="150" Source="Res\1 (11).gif" Margin="30,-1100,0,0" Visibility="Visible" MouseEnter="Герой7_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="Lvlм7" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой7" Value="1200" Minimum="0" Maximum="1200" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой7" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой7" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой7_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="960,0,0,0">
+                        <Image Name="Герой8" Height="150" Width="150" Source="Res\1 (24).gif" Margin="35,-1100,0,0" Visibility="Visible" MouseEnter="Герой8_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой8" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой8" Value="5000" Minimum="0" Maximum="5000" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой8" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой8" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой8_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <!---ЛИСТ 2-->
+                <StackPanel x:Name="List2" Margin="0,-200,0,0" Visibility="Hidden">
+                    <!---1 РЯД-->
+                    <StackPanel>
+                        <Image Name="Герой9" Height="150" Width="150" Source="Res\1 (51).gif" Margin="20,-1100,0,0" MouseEnter="Герой9_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой9" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой9" Value="8000" Minimum="0" Maximum="8000" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой9" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой9" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой9_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="320,0,0,0">
+                        <Image Name="Герой10" Height="150" Width="150" Source="Res\1 (52).gif" Margin="0,-1100,0,0" Visibility="Visible" MouseEnter="Герой10_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой10" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой10" Value="9000" Minimum="0" Maximum="9000" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой10" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой10" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой10_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="640,0,0,0">
+                        <Image Name="Герой11" Height="150" Width="150" Source="Res\1 (6).gif" Margin="30,-1100,0,0" Visibility="Visible" MouseEnter="Герой11_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой11" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой11" Value="4000" Minimum="0" Maximum="4000" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой11" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой11" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой11_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="960,0,0,0">
+                        <Image Name="Герой12" Height="150" Width="150" Source="Res\1 (20).gif" Margin="10,-1100,0,0" Visibility="Visible" MouseEnter="Герой12_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой12" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой12" Value="15000" Minimum="0" Maximum="15000" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой12" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой12" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой12_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <!---2 РЯД-->
+                    <StackPanel Margin="0,200,0,0">
+                        <Image Name="Герой13_Скин1" Height="150" Width="150" Source="Res\1 (33).gif" Visibility="Visible" Margin="0,-1100,0,0" MouseEnter="Герой13_Скин1_MouseEnter"/>
+                        <Image Name="Герой13_Скин2" Height="150" Width="150" Source="Res\1 (49).gif" Visibility="Hidden" Margin="0,-1100,0,0" MouseEnter="Герой13_Скин1_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="Герой13" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой13" Value="7500" Minimum="0" Maximum="7500" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой13" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой13" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой13_Скин1_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="320,0,0,0">
+                        <Image Name="Герой14" Height="150" Width="150" Source="Res\1 (56).gif" Margin="60,-1100,0,0" Visibility="Visible" MouseEnter="Герой14_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой14" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой14" Value="6200" Minimum="0" Maximum="6200" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой14" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой14" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой14_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="640,0,0,0">
+                        <Image Name="Герой15" Height="150" Width="150" Source="Res\1 (55).gif" Margin="30,-1100,0,0" Visibility="Visible" MouseEnter="Герой15_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой15" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой15" Value="10000" Minimum="0" Maximum="10000" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой15" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой15" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой15_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="960,0,0,0">
+                        <Image Name="Герой16" Height="150" Width="150" Source="Res\1 (39).gif" Margin="15,-1100,0,0" Visibility="Visible" MouseEnter="Герой16_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой16" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой16" Value="7500" Minimum="0" Maximum="7500" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой16" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой16" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой16_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <!---ЛИСТ 3-->
+                <StackPanel x:Name="List3" Margin="0,-200,0,0" Visibility="Hidden">
+                    <!---1 РЯД-->
+                    <StackPanel>
+                        <Image Name="Герой17" Height="150" Width="150" Source="Res\1 (48).gif" Margin="35,-1100,0,0" MouseEnter="Герой17_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой17" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой17" Value="8000" Minimum="0" Maximum="8000" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой17" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой17" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой17_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="320,0,0,0">
+                        <Image Name="Герой18" Height="150" Width="150" Source="Res\1 (37).gif" Margin="15,-1100,0,0" Visibility="Visible" MouseEnter="Герой18_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой18" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой18" Value="20000" Minimum="0" Maximum="20000" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой18" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой18" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой18_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="640,0,0,0">
+                        <Image Name="Герой19" Height="150" Width="150" Source="Res\1 (16).gif" Margin="35,-1100,0,0" Visibility="Visible" MouseEnter="Герой19_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой19" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой19" Value="4400" Minimum="0" Maximum="4400" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой19" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой19" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой19_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="960,0,0,0">
+                        <Image Name="Герой20" Height="150" Width="150" Source="Res\1 (46).gif" Margin="10,-1100,0,0" Visibility="Visible" MouseEnter="Герой20_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой20" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой20" Value="2600" Minimum="0" Maximum="2600" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой20" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой20" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой20_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <!---2 РЯД-->
+                    <StackPanel Margin="0,200,0,0">
+                        <Image Name="Герой21" Height="150" Width="150" Source="Res\1 (43).gif" Visibility="Visible" Margin="0,-1100,0,0" MouseEnter="Герой21_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой21" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой21" Value="7300" Minimum="0" Maximum="7300" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой21" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой21" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой21_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="320,0,0,0">
+                        <Image Name="Герой22" Height="150" Width="150" Source="Res\1 (40).gif" Margin="30,-1100,0,0" Visibility="Visible" MouseEnter="Герой22_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой22" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой22" Value="5800" Minimum="0" Maximum="5800" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой22" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой22" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой22_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="640,0,0,0">
+                        <Image Name="Герой23" Height="150" Width="150" Source="Res\1 (34).gif" Margin="30,-1100,0,0" Visibility="Visible" MouseEnter="Герой23_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой23" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой23" Value="2200" Minimum="0" Maximum="2200" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой23" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой23" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой23_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="960,0,0,0">
+                        <Image Name="Герой24" Height="150" Width="150" Source="Res\1 (4).gif" Margin="15,-1100,0,0" Visibility="Visible" MouseEnter="Герой24_MouseEnter"/>
+                        <TextBlock Text="Lvl 0" Name="LvlГерой24" Height="50" Width="80" FontSize="25" Margin="30,-950,0,0" Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <ProgressBar Name="ЖизниГерой24" Value="25000" Minimum="0" Maximum="25000" Height="10" Width="125" Margin="130,-1090,0,0" Foreground="Red" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <ProgressBar Name="ОпытГерой24" Value="0" Minimum="0" Height="10" Width="125" Margin="155,-1090,0,0" Foreground="#FFE8FF00" Background="#FF545454" RenderTransformOrigin="0.5,0.5">
+                            <ProgressBar.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ProgressBar.RenderTransform>
+                        </ProgressBar>
+                        <Rectangle Height="180" Width="150" Margin="35,-1090,0,0" Stroke="Black" StrokeThickness="5"/>
+                        <Label Name="ЗакрытГерой24" Content="ЗАКРЫТО" FontSize="25" MouseEnter="Герой24_MouseEnter" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="180" Width="150" Margin="35,-1090,0,0" Foreground="White" Background="#B2040404" FontWeight="Bold"/>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <Button Content="Лечить" Height="40" Width="150" FontSize="25" Margin="520,-840,0,0" FontWeight="Bold"/>
+                
+                <TextBlock Name="ЛистВ" Text="◄" FontSize="30" Height="40" Width="35" Margin="1020,-860,0,0" Foreground="White" MouseDown="ЛистВ_MouseDown"/>
+                <TextBlock Name="КакойЛист" Text="1" FontSize="30" Height="40" Width="20" Margin="1065,-860,0,0" Foreground="White"/>
+                <TextBlock Name="ЛистП" Text="►"  FontSize="30" Height="40" Width="35" Margin="1120,-860,0,0" Foreground="White" MouseDown="ЛистП_MouseDown"/>
+
+
+            </StackPanel>
+
+        </StackPanel>
+
+
+        <!--Город-->
+        <StackPanel x:Name="СГород" Orientation="Vertical" Margin="0,-1090,0,0" Visibility="Hidden">
+
+            <Image Source="Res\ф4.gif" Margin="0,-50,0,0"/>
+            <!---Монстр 1-->
+            <StackPanel x:Name="СМонстр1" Margin="-900,0,0,0" Visibility="Visible">
+                <Image Name="МонстрГород1" Height="600" Width="600" Source="Res\1 (50).gif" Margin="0,-650,0,0" MouseEnter="МонстрГород1_MouseEnter"/>
+                <ProgressBar Name="ЖизниMонстр1" Value="5000" Minimum="0" Maximum="5000" Height="30" Width="450" Margin="0,-1040,0,0" Foreground="#FFD00000" Background="#FF545454"/>
+            </StackPanel>
+
+            <!---Монстр 2-->
+            <StackPanel x:Name="СМонстр2" Margin="-900,0,0,0" Visibility="Hidden">
+                <Image Name="МонстрГород2" Height="500" Width="500" Source="Res\1 (35).gif" Margin="0,-550,0,0" RenderTransformOrigin="0.5,0.5" MouseEnter="МонстрГород2_MouseEnter">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <ProgressBar Name="ЖизниMонстр2" Value="2500" Minimum="0" Maximum="2500" Height="30" Width="450" Margin="0,-1040,0,0" Foreground="#FFD00000" Background="#FF545454"/>
+            </StackPanel>
+
+            <!---Герои-->
+            <StackPanel>
+                <Image Name="АтакаГерой1" Height="200" Width="200" Margin="150,-360,0,0"/>
+                <ProgressBar Name="ЖизниГеройБой1" Value="0" Minimum="0" Height="20" Width="200" Margin="120,-600,0,0" Visibility="Hidden" Foreground="#FFD00000" Background="#FF545454"/>
+
+                <Image Name="АтакаГерой2" Height="200" Width="200" Margin="600,-360,0,0"/>
+                <ProgressBar Name="ЖизниГеройБой2" Value="0" Minimum="0" Height="20" Width="200" Margin="620,-600,0,0" Visibility="Hidden" Foreground="#FFD00000" Background="#FF545454"/>
+
+                <TextBlock Text="Герой 1:" FontSize="30" Height="40" Width="130" Margin="630,-1300,0,0" Foreground="White" FontWeight="Bold"/>
+                <ComboBox Name="СписокГероев1" IsEditable="True" Height="30" Width="160" FontSize="15" Margin="930,-1300,0,0" MouseEnter="СписокГероев1_MouseEnter"/>
+                <TextBlock Text="Герой 2:" FontSize="30" Height="40" Width="130" Margin="630,-1200,0,0" Foreground="White" FontWeight="Bold"/>
+                <ComboBox Name="СписокГероев2" IsEditable="True" Height="30" Width="160" FontSize="15" Margin="930,-1200,0,0" MouseEnter="СписокГероев2_MouseEnter"/>
+
+                <Button Name="Атака1" Content="Герой 1: Атака" FontSize="20" Height="40" Width="200" Margin="1220,-660,0,0" Visibility="Hidden" Click="Атака1_Click"/>
+                <Button Name="Атака2" Content="Герой 2: Атака" FontSize="20" Height="40" Width="200" Margin="1220,-460,0,0" Visibility="Hidden" Click="Атака2_Click"/>
+                <Button Name="Лечение1" Content="Герой 1: Лечение" FontSize="20" Height="40" Width="200" Margin="1220,-560,0,0" Visibility="Hidden"/>
+                <Button Name="Лечение2" Content="Герой 2: Лечение" FontSize="20" Height="40" Width="200" Margin="1220,-360,0,0" Visibility="Hidden"/>
+            </StackPanel>
+
+            <!---Опыт и Монеты-->
+            <StackPanel Margin="0,40,0,0">
+
+                <TextBlock Text="Опыт:" FontSize="50" Height="60" Width="200" Margin="-150,-1300,0,0" Foreground="White" FontWeight="Bold"/>
+                <TextBlock Name="ОпытГород" Text="0" FontSize="50" Height="60" Width="200" Margin="180,-1300,0,0" Foreground="White" FontWeight="Bold"/>
+                <TextBlock Text="Фикрики:" FontSize="50" Height="60" Width="250" Margin="-110,-1200,0,0" Foreground="White" FontWeight="Bold"/>
+                <TextBlock Name="МонетыГород" Text="0 ₣" FontSize="50" Height="60" Width="250" Margin="410,-1200,0,0" Foreground="White" FontWeight="Bold"/>
+
+                <Button Name="ЗабратьОпытИМонетыГород" Content="Забрать" FontSize="20" Height="40" Width="200" Margin="-150,-1090,0,0" FontWeight="Bold" Click="ЗабратьОпытИМонетыГород_Click"/>
+
+            </StackPanel>
+
+        </StackPanel>
+
+        <!--Замок-->
+        <StackPanel x:Name="СЗамок" Orientation="Vertical" Visibility="Hidden">
+
+            <Image Source="Res\ф3.gif" Margin="0,-400,0,0"/>
+
+        </StackPanel>
+
+        <!--Подземелье-->
+        <StackPanel x:Name="СПодземелье" Orientation="Vertical" Visibility="Hidden">
+
+            <Image Source="Res\ф5.gif" Margin="0,-400,0,0"/>
+
+        </StackPanel>
+
+        <!--Развалины-->
+        <StackPanel x:Name="СРазвалины" Orientation="Vertical" Visibility="Hidden">
+
+            <Image Height="500" Width="910" Source="Res\ф1.gif" Margin="0,-450,0,0"/>
+
+        </StackPanel>
+
+        <!--Магазин-->
+        <StackPanel x:Name="СМагазин" Orientation="Vertical" Visibility="Hidden">
+
+            <Image Source="Res\ф6.gif" Margin="0,-500,0,0"/>
+
+        </StackPanel>
+
+        <StackPanel Margin="1300,-3400,0,0" Height="290" Width="160">
+            <Button Name="Лес" Height="40" Width="160" FontSize="25" Content="Лес(Дом)" FontFamily="Candara Light" Margin="0,0,0,0" Background="#FF6B9083" BorderBrush="{x:Null}" Foreground="White" Click="Лес_Click"/>
+            <Button Name="Город" IsEnabled="False" Height="40" Width="160" FontSize="25" Content="Город" FontFamily="Candara Light" Margin="0,0,0,0" Background="#FF6B9083" BorderBrush="{x:Null}" Foreground="White" Click="Город_Click"/>
+            <Button Name="Замок" IsEnabled="False" Height="40" Width="160" FontSize="25" Content="Замок" FontFamily="Candara Light" Margin="0,0,0,0" Background="#FF6B9083" BorderBrush="{x:Null}" Foreground="White" Click="Замок_Click"/>
+            <Button Name="Развалины" IsEnabled="False" Height="40" Width="160" FontSize="25" Content="Развалины" FontFamily="Candara Light" Margin="0,0,0,0" Background="#FF6B9083" BorderBrush="{x:Null}" Foreground="White" Click="Развалины_Click"/>
+            <Button Name="Подземелье" IsEnabled="False" Height="40" Width="160" FontSize="25" Content="Подземелье" FontFamily="Candara Light" Margin="0,0,0,0" Background="#FF6B9083" BorderBrush="{x:Null}" Foreground="White" Click="Подземелье_Click"/>
+            <Button Name="Магазин" Height="40" Width="160" FontSize="25" Content="Магазин" FontFamily="Candara Light" Margin="0,0,0,0" Background="#FF6B9083" BorderBrush="{x:Null}" Foreground="White" Click="Магазин_Click"/>
+            <Button Name="Выход" Height="40" Width="160" FontSize="25" Content="Выход" FontFamily="Candara Light" Margin="0,0,0,0" Background="#FF6B9083" BorderBrush="{x:Null}" Foreground="White" Click="Выход_Click"/>
+        </StackPanel>
+
+    </StackPanel>
+</Window>
